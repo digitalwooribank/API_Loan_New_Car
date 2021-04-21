@@ -1,20 +1,20 @@
-﻿{
+{
   "swagger" : "2.0",
   "info" : {
-    "description" : "UNOAPI Swagger Spec. JSON",
+    "description" : "Wooribank API, Wooribank Swagger Spec. JSON",
     "version" : "1.0.0",
-    "title" : "UNOAPI"
+    "title" : "Wooribank API"
   },
-  "host" : "",
+  "host" : "localhost:8080",
   "basePath" : "/",
   "tags" : [ {
-    "name" : "api-list",
-    "description" : "List of APIs"
+    "name" : "List of APIs",
+    "description" : ""
   } ],
   "paths" : {
     "/oai/wb/v1/newcar/getNewCarLoanAm" : {
       "post" : {
-        "tags" : [ "api-list" ],
+        "tags" : [ "List of APIs" ],
         "summary" : "신차대출한도조회",
         "operationId" : "_oai_wb_v1_newcar_getNewCarLoanAm",
         "consumes" : [ "application/json" ],
@@ -23,29 +23,15 @@
           "name" : "appkey",
           "in" : "header",
           "description" : "API Key(제휴사키)",
-          "required" : false
-        }, {
-          "name" : "authorization",
-          "in" : "header",
-          "description" : "인증토큰",
-          "required" : false
-        }, {
-          "name" : "itcsno",
-          "in" : "header",
-          "description" : "통합고객번호",
-          "required" : false
-        }, {
-          "name" : "ebnk_utzpe_no",
-          "in" : "header",
-          "description" : "전자뱅킹이용자번호",
-          "required" : false
+          "type" : "string",
+          "required" : false        
         }, {
           "in" : "body",
           "name" : "REQUEST",
           "description" : "request body",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/_oai_wb_v1_newcar_getNewCarLoanAm_REQUEST_t8a6hbf6s6k0"
+            "$ref" : "#/definitions/_oai_wb_v1_newcar_getNewCarLoanAm_REQUEST_1jyag8g4rarmr"
           }
         } ],
         "responses" : {
@@ -75,7 +61,7 @@
     }
   },
   "definitions" : {
-    "_oai_wb_v1_newcar_getNewCarLoanAm_REQUEST_t8a6hbf6s6k0" : {
+    "_oai_wb_v1_newcar_getNewCarLoanAm_REQUEST_1jyag8g4rarmr" : {
       "type" : "object",
       "required" : [ "dataBody", "dataHeader" ],
       "properties" : {
@@ -137,21 +123,11 @@
     },
     "_oai_wb_v1_newcar_getNewCarLoanAm_dataBody_s1649su6elpd" : {
       "type" : "object",
-      "required" : [ "CRINF_INQ_AGR_YN", "CUS_IDF_INF_AGR_YN", "DBPE_ANL_ICM_AM", "GAT_UTZ_CHC_AGR_YN", "GAT_UTZ_MND_AGR_YN", "GRN_DSCD", "GRN_NCAR_YN", "HLD_ITCSNO", "INF_OFR_CHC_AGR_YN", "INF_OFR_MND_AGR_YN", "MDBT_CHID_ENCY_ACNM_N", "MD_INF", "RSP_TRNO" ],
+      "required" : [ "CRINF_INQ_AGR_YN", "CUS_IDF_INF_AGR_YN", "DBPE_ANL_ICM_AM", "GAT_UTZ_CHC_AGR_YN", "GAT_UTZ_MND_AGR_YN", "GRN_DSCD", "GRN_NCAR_YN","INF_OFR_CHC_AGR_YN", "INF_OFR_MND_AGR_YN", "MDBT_CHID_ENCY_ACNM_N", "MD_INF"],
       "properties" : {
-        "GRN_DSCD" : {
-          "type" : "string",
-          "example" : "03",
-          "description" : "보증구분코드"
-        },
-        "HLD_ITCSNO" : {
-          "type" : "string",
-          "example" : "10061181286",
-          "description" : "차주통합고객번호"
-        },
         "DBPE_ANL_ICM_AM" : {
-          "type" : "number",
-          "example" : "85000000",
+          "type" : "string",
+          "example" : "15000000",
           "description" : "채무자연간소득금액"
         },
         "GRN_NCAR_YN" : {
@@ -159,8 +135,13 @@
           "example" : "Y",
           "description" : "보증신차여부"
         },
+        "CAR_PR" : {
+          "type" : "number",
+          "example" : "30000000",
+          "description" : "차량가격"
+        },
         "CRINF_INQ_AGR_YN" : {
-          "type" : "string",
+          "type" : "number",
           "example" : "Y",
           "description" : "신용정보조회동의여부"
         },
@@ -176,7 +157,7 @@
         },
         "CUS_IDF_INF_AGR_YN" : {
           "type" : "string",
-          "example" : "",
+          "example" : "Y",
           "description" : "고객식별정보동의여부"
         },
         "INF_OFR_CHC_AGR_YN" : {
@@ -188,21 +169,6 @@
           "type" : "string",
           "example" : "Y",
           "description" : "수집이용선택동의여부"
-        },
-        "RSP_TRNO" : {
-          "type" : "string",
-          "example" : "0",
-          "description" : "응답거래번호"
-        },
-        "MD_INF" : {
-          "type" : "string",
-          "example" : "",
-          "description" : "매체정보"
-        },
-        "MDBT_CHID_ENCY_ACNM_N" : {
-          "type" : "string",
-          "example" : "19800624",
-          "description" : "주채무자암호화실명번호"
         }
       },
       "description" : "response data header"
@@ -228,11 +194,6 @@
     "_oai_wb_v1_newcar_getNewCarLoanAm_dataBody_s4mcz9wnqlgw" : {
       "type" : "object",
       "properties" : {
-        "HLD_ITCSNO" : {
-          "type" : "string",
-          "example" : "10061181286",
-          "description" : "차주통합고객번호"
-        },
         "RSP_TRNO" : {
           "type" : "string",
           "example" : "",
